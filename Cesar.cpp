@@ -1,26 +1,37 @@
 #include <iostream>
 #include "Crypto.hpp"
+
 class Cesar : public Crypto {
 	private:
-		int disp = 3;
-		static Crypto * pointer;
+		int shift;
 	public:
-		void setDisplacement(int disp)
-			{ this->disp = disp; }
-		int getDisplacement()
-			{ return disp; }
-		static Crypto* getInstance(){
-			if (pointer)
-		        pointer = (Crypto *) new Cesar;
-		    return pointer;
-		}
-	private:
-		Cesar();
-			
+		string encode(const string);
+		string decode(const string);
+		Cesar(int shift) {
+			this->shift = shift;
+		};
 };
 
-string Cesar::encode(string str){
-	return NULL;
+string Cesar::encode(const string str){
+	string aux; 
+	for ( int i=0; i < str.length(); i++){
+		char auxChar = (char) str[i];
+		if ( (auxChar > 64 && auxChar < 91) || ( auxChar >  96 && auxChar < 123) )
+			auxChar += Cesar::shift % 26;
+		aux += auxChar;
+	}
+	return aux;
+}
+
+string Cesar::decode(const string str){
+	string aux; 
+	for ( int i=0; i < str.length(); i++){
+		char auxChar = (char) str[i];
+		if ( (auxChar > 64 && auxChar < 91) || ( auxChar >  96 && auxChar < 123) )
+			auxChar -= Cesar::shift % 26;
+		aux += auxChar;
+	}
+	return aux;
 }
 
 int main(void){}
