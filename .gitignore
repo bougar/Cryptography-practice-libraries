@@ -1,4 +1,6 @@
 # Compiled Object files
+.*.swp
+*.swp
 *.slo
 *.lo
 *.o
