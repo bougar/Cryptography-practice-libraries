@@ -1,2 +1,4 @@
 # Cryptography-practice-libraries
-C++ old crypto library 
+C++ String cryptography library. 
+The objetive is improve my c++ skills.
+In the future I will work with python integration :)
